@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: report.aux
+The style file: wreport.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: refs/reference.bib
+Warning--Require citedate: irdawebsite
+You've used 17 entries,
+            3113 wiz_defined-function locations,
+            811 strings with 7838 characters,
+and the built_in function-call counts, 21795 in all, are:
+= -- 2320
+> -- 48
+< -- 113
++ -- 1950
+- -- 148
+* -- 668
+:= -- 2520
+add.period$ -- 0
+call.type$ -- 17
+change.case$ -- 62
+chr.to.int$ -- 0
+cite$ -- 18
+duplicate$ -- 2867
+empty$ -- 800
+format.name$ -- 124
+if$ -- 5816
+int.to.chr$ -- 0
+int.to.str$ -- 17
+missing$ -- 0
+newline$ -- 78
+num.names$ -- 17
+pop$ -- 268
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 258
+stack$ -- 0
+substring$ -- 2430
+swap$ -- 701
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 277
+width$ -- 19
+write$ -- 257
+(There was 1 warning)
