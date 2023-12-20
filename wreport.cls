@@ -17,7 +17,7 @@
 \ProcessOptions
 \LoadClass[12pt, openany, twoside]{article}%小四号 12pt
 \RequirePackage[a4paper,
-  inner=2.3cm, outer=2.3cm, top=2.54cm, bottom=2.54cm,
+  inner=3.18cm, outer=3.18cm, top=2.54cm, bottom=2.54cm,
   bindingoffset=0cm]{geometry}
 
 \RequirePackage[bf,pagestyles]{titlesec}
@@ -36,6 +36,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
+\RequirePackage{epstopdf}
 \RequirePackage[comma,numbers,square,sort&compress]{natbib}
 \RequirePackage{paralist}
 \RequirePackage{bm}
@@ -66,7 +67,10 @@
 \usepackage[titles,subfigure]{tocloft}
 
 
+
 %%%%%%%%%%%%%%%%字体与字号设置%%%%%%%%%%%%%%%%%
+
+
 \setCJKmainfont[AutoFakeBold=true]{SimSun}
 
 \setCJKfamilyfont{zhsong}{SimSun}
@@ -104,7 +108,9 @@
 \renewcommand{\cftsubsecfont}{\heiti} %设置subsection条目的字体
 \setlength\cftbeforesecskip{2pt}
 \setlength\cftbeforesubsecskip{0em}
-
+% \cftsetindents{section}{21pt}{22pt}%%%%%调整indent到章的宽度
+% \cftsetindents{subsection}{44pt}{31pt}
+% \cftsetindents{subsubsection}{76pt}{41pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%文本格式设置%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \linespread{1.4}%行距设置
@@ -114,21 +120,17 @@
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
 \setlength{\parskip}{0pt}% 段距
 
-%%%%%%%%%%%%%%章节字体字号等格式设置%%%%%%%%%%%%%%%%
-\renewcommand\thesection{\arabic{section}.} %%%节后面加.
-\renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
-
-
+%%%%%%%%%%%%%%节字号设置%%%%%%%%%%%%%%%%
 \titleformat{\section}[block]
-  {\xiaosanhao\fs\bf  }%%%%%%%%字体
+  {\xiaosanhao\heiti}%%%%%%%%字体
   {\thesection}{7pt}{}%%%%%%%%%%%标号与文字间距
 
 \titleformat{\subsection}[block]
-  {\sihao\fs\bf }
+  {\sihao\heiti}
   {\thesubsection}{7pt}{}
 
 \titleformat{\subsubsection}[block]
-  {\xiaosihao\fs\bf }
+  {\xiaosihao\heiti}
   {\thesubsubsection}{6pt}{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -146,34 +148,22 @@
 \newtheorem{problem}[theorem]{问题}
 \newtheorem{assumption}[theorem]{假设}
 
+\renewcommand{\proofname}{\bfseries 证明}
 
-%%%%%%%%%%%%%%%%英文的标号变成中文%%%%%%%%%%%
-\newcommand\half@space{\hspace{10pt}}
-\newcommand\one@space{\phantom{一}}
-\newcommand\two@space{\phantom{一二}}
 
 %%%%%%%%%%%%%%%页眉页脚设置%%%%%%%%%%%%%%%%%%%
-%%%%申请年份
-\newcommand{\cn@year}{}
-\newcommand{\applicationyear}[1]{
-  \renewcommand{\cn@year}{#1}
-}
-\newcommand{\l@header}{\one@space ZJNSF}
-\newcommand{\c@header}{浙江省基础公益研究计划项目申请书(\cn@year 年度)}
-\newcommand{\r@header}{第\thepage 页 \two@space}
-
-%%%% 页眉及页脚设置
-\pagestyle{fancy}
-\fancyhead[L]{\wuhao \l@header}
-\fancyhead[C]{\fs\wuhao \c@header}
-\fancyhead[R]{\fs\wuhao \r@header}
-\fancyfoot[C]{}
-
+\pagestyle{plain}%%%%%%%%%%%%%%%%%%%%%%页眉页脚风格设置
 %%%%%%%%%%%%%%%%%%%%%%%插入图片%%%%%%%%%%%%%%%%%%%%%%%%
 \graphicspath{{./pics/}}
 %%%%%%%%%%%%%%%需要用到的命令%%%%%%%%%%%%%
 
 
+
+
+%%%%%%%%%%%%%%%%英文的标号变成中文%%%%%%%%%%%
+\newcommand\half@space{\hspace{10pt}}
+\newcommand\one@space{\phantom{一}}
+\newcommand\two@space{\phantom{一二}}
 
 %%%%%%%%%%%%章节型中文名字设置%%%%%%%%%%%%%%
 \renewcommand{\contentsname}{\centerline{目\half@space 次}}
@@ -245,6 +235,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\myintroduction}{
+\section*{引言}
+\addcontentsline{toc}{section}{引言}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcommand{\mytitle}{
   % \title{\heiti\sanhao 正\one@space 文\vspace{-1.5cm}}
   % \date{}
@@ -253,7 +252,7 @@
   \begin{center}
     {\heiti\sanhao 正\one@space 文}
   \end{center}
-  \vspace{0.5cm}
+  \vspace{0.3cm}
   \setcounter{page}{1}
   \pagenumbering{arabic}
 }
@@ -272,16 +271,23 @@
 
 \newcommand{\myreference}{
 \newpage
-\section{参考文献}
+\section*{\sanhao\centerline{参\half@space 考\half@space 文\half@space 献}}
+\vspace{0.5cm}
 \addcontentsline{toc}{section}{参考文献}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%附录%%%%%%%%%%%%%%%%%%%%
 \newcommand{\myappendix}{
   \newpage
-  \renewcommand{\thesubsection}{A.\arabic{subsection}}
+  \appendix
+  \interlinepenalty=0
   \section*{\sanhao\centerline{附\half@space 录}}
   \vspace{0.5cm}
-  \addcontentsline{toc}{section}{附录}
+  \addtocontents{toc}{\protect\addtolength{\cftsecnumwidth}{24pt}}
+  \renewcommand{\thesection}{附录\Alph{section}}
+  \renewcommand{\thesubsection}{\Alph{section}.\arabic{subsection}}
+  \renewcommand{\appendixname}{附录}
+  \section{主要成果情况}
+  % \addcontentsline{toc}{section}{附录}
   }
 
